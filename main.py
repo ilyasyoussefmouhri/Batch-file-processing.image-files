@@ -1,14 +1,16 @@
-from processor import setup_files
+import argparse
 from processor import batch_process_files
 
 def main():
-   print("Step 1: Setting up practice files...")
-    setup_files()
+ # Setup argument parser
+    parser = argparse.ArgumentParser(description='Batch process images: rename, convert, and organize')
+    parser.add_argument('folder_path', type=str, help='Path to the folder containing files to process')
     
-    print("\nStep 2: Processing files...")
-    batch_process_files()
+    args = parser.parse_args()
     
-    print("\nCheck the 'photo_project' folder to see the results!")
+    print(f"Processing files in: {args.folder_path}")
+    batch_process_files(args.folder_path)
+    print("\nCheck the folder to see the results!")
 
 
 if __name__ == "__main__":
