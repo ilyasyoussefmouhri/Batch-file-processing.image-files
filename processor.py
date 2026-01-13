@@ -2,7 +2,6 @@ from pathlib import Path
 from PIL import Image
 from datetime import datetime
 import shutil
-import argparse
 
 
 def batch_process_files(folder_path):
