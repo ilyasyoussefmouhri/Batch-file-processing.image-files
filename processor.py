@@ -28,8 +28,14 @@ def batch_process_files(folder_path):
     original_jpg_dir.mkdir(exist_ok=True)
     converted_jpg_dir.mkdir(exist_ok=True)
     
-    # Get all files in the directory (excluding subdirectories)
-    files = [f for f in folder_path.iterdir() if f.is_file()]
+    # Get all image files in the directory (excluding subdirectories)
+    SUPPORTED_FORMATS = {'.jpg', '.jpeg', '.png'}
+    files = [f for f in folder_path.iterdir() 
+         if f.is_file() and f.suffix.lower() in SUPPORTED_FORMATS]
+
+    if not files:
+    print("No image files found in the directory.")
+    return
     
     # Get current date for naming
     today = datetime.now().strftime('%Y-%m-%d')
